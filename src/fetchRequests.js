@@ -1,4 +1,4 @@
-const baseURL= "http://kwitter-api-b.herokuapp.com/";
+const baseURL= "https://kwitter-api-b.herokuapp.com/";
 
 export const loginRequest = (username, password) => {
   return fetch(baseURL + "auth/login", {
@@ -10,6 +10,7 @@ export const loginRequest = (username, password) => {
     }),
   })
     .then((res) => res.json())
+    
 };
 
 export const logoutRequest = (token) => {

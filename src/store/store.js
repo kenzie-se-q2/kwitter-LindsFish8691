@@ -1,9 +1,13 @@
 import create from "zustand";
 import { devtools, redux, persist } from "zustand/middleware";
 
-
 // define the store's initial state
-const initialState = { user: {token: ""}, messages: [] };
+const localStorage = window.localStorage.getItem("storage");
+
+let initialState = { user: { token: "" }, messages: [] };
+if (localStorage) {
+  initialState = JSON.parse(localStorage).state;
+}
 
 // set action types
 export const LOGIN = "LOGIN";
@@ -22,4 +26,6 @@ const reducer = (state, action) => {
 };
 
 // create useStore hook
-export const useStore = create(persist(devtools(redux(reducer, initialState))))
+export const useStore = create(
+  persist(devtools(redux(reducer, initialState)), { name: "storage" })
+);
