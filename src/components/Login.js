@@ -3,6 +3,7 @@ import { loginRequest } from "../fetchRequests";
 import { Link } from 'react-router-dom';
 
 import { LOGIN, useStore } from "../store/store";
+const baseURL= "kwitter-api-b.herokuapp.com"
 
 function Login(props){
   const dispatch = useStore((state) => state.dispatch);
@@ -10,15 +11,35 @@ function Login(props){
   const [formData, setFormData] = useState({
     username: "",
     password: "",
-    token: "",
   });
 
+
+
+  const fetchLogin =()=>{
+    console.log(formData.username)
+    fetch(baseURL + "/auth/login",{
+      method: "POST",
+      body:  JSON.stringify ({
+        username: formData.username,
+        password: formData.password,
+      })
+
+    })  
+    .then((res) => res.json())
+    .then((data) => setFormData(data))
+  }
+  // requestAccessToken(data){
+    
+  // }
+
   const handleLogin = (e) => {
+    fetchLogin()
     e.preventDefault();
     loginRequest(formData.username, formData.password).then((userData) =>
       dispatch({ type: LOGIN, payload: userData })
     );
   };
+ 
 
   const handleChange = (e) => {
     const inputName = e.target.name;
