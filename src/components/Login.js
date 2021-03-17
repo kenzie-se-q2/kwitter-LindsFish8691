@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { loginRequest } from "../fetchRequests";
+import { Link } from 'react-router-dom';
 
 import { LOGIN, useStore } from "../store/store";
 
@@ -9,6 +10,7 @@ function Login(props){
   const [formData, setFormData] = useState({
     username: "",
     password: "",
+    token: "",
   });
 
   const handleLogin = (e) => {
@@ -45,9 +47,15 @@ function Login(props){
           onChange={handleChange}
         />
         <button type="submit">Login</button>
+        <br></br>
+        <label>New User? 
+        <Link to="/registration">Click here!</Link>
+        </label>
       </form>
     </>
   );
 };
 
 export default Login;
+
+//  tina
