@@ -6,19 +6,21 @@ import { getMessages } from '../fetchRequests';
 
  function MessageList(props) {
    const dispatch = useStore((state) => state.dispatch);
-   const [messages, setMessages] = useState([]);
+
+   const store= useStore()
    useEffect(() => {
        getMessages().then((messagesData)=>{
-         dispatch({ type: GET_MESSAGES, payload: messagesData });
+         dispatch({ type: GET_MESSAGES, payload: messagesData.messages});
+         console.log(messagesData.messages);
        })
-    
+    console.log(store);
    }, [])
  
-      console.log(messages);
+      // console.log(messages);
       return (
           <section className="Messages">
           <ul className="MessageList">
-         {messages.messages && messages.messages.map((message) => (
+         {store.messages && store.messages.map((message) => (
              <MessageItem 
              id={message.id}
              text={message.text}

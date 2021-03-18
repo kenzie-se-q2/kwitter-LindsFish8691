@@ -18,7 +18,7 @@ export const logoutRequest = (token) => {
   }).then((res) => res.json());
 };
 
-export const getMessages = (props) => {
+export const getMessages = () => {
   return fetch(baseURL + "messages").then((res) => res.json());
 };
 
