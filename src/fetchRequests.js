@@ -28,3 +28,30 @@ export const userProfilePic = (username, password, token) => {
     .then((res) => res.json())
     .then((user) => console.log(user));
 };
+
+export const createUser = (username, displayName, password) => {
+  fetch(baseURL + "users", {
+    method: "POST",
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify({
+      username,
+      displayName,
+      password,
+    }),
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("bad response", res);
+      }
+      return res;
+    })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .then(() => setButtonPopup(true))
+    .catch((e) => {
+      alert("Username may already be taken");
+      <PopUp>
+        <h3>Please try again</h3>
+      </PopUp>;
+    });
+};
