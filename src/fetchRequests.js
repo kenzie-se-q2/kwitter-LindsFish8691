@@ -8,8 +8,8 @@ export const loginRequest = (username, password) => {
       username,
       password,
     }),
-  })
-    .then((res) => res.json())
+  }).then((res) => res.json())
+    
 };
 
 export const logoutRequest = (token) => {
@@ -18,8 +18,7 @@ export const logoutRequest = (token) => {
   }).then((res) => res.json());
 };
 
-export const getMessages = () => {
-  return fetch(baseURL + "messages", {
-  }).then((res) => res.json())
+export const getMessages = (props) => {
+  return fetch(baseURL + "messages").then((res) => res.json());
 };
 
