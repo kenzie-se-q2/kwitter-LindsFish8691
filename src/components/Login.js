@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { loginRequest } from "../fetchRequests";
+import { Link } from "react-router-dom";
 
 import { LOGIN, useStore } from "../store/store";
 
-function Login(props){
+function Login(props) {
   const dispatch = useStore((state) => state.dispatch);
 
   const [formData, setFormData] = useState({
@@ -11,11 +12,13 @@ function Login(props){
     password: "",
   });
 
+  const user = useStore((state) => state.user);
+
   const handleLogin = (e) => {
     e.preventDefault();
-    loginRequest(formData.username, formData.password).then((userData) =>
-      dispatch({ type: LOGIN, payload: userData })
-    );
+    loginRequest(formData.username, formData.password).then((userData) => {
+      dispatch({ type: LOGIN, payload: userData });
+    });
   };
 
   const handleChange = (e) => {
@@ -45,9 +48,16 @@ function Login(props){
           onChange={handleChange}
         />
         <button type="submit">Login</button>
+        <br></br>
+        <div>{user.message ? user.message : ""}</div>
+        <br></br>
+        <label>
+          New User?
+          <Link to="/registration">Click here!</Link>
+        </label>
       </form>
     </>
   );
-};
+}
 
 export default Login;
