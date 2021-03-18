@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { baseURL } from "../../fetchRequests.js";
-import { useStore } from "../../store/store.js";
-import { Link } from "react-router-dom";
+//import { useStore } from "../../store/store.js";
 import PopUp from "./Popup.js";
 
 function Registration(props) {
-  const dispatch = useStore((state) => state.dispatch);
+  //const dispatch = useStore((state) => state.dispatch);
 
   const [buttonPopup, setButtonPopup] = useState(false);
   const [userData, setUserdata] = useState({
