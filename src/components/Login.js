@@ -16,9 +16,11 @@ function Login(props) {
 
   const handleLogin = (e) => {
     e.preventDefault();
+
     loginRequest(formData.username, formData.password).then((userData) => {
       dispatch({ type: LOGIN, payload: userData });
     });
+
   };
 
   const handleChange = (e) => {
@@ -31,22 +33,9 @@ function Login(props) {
     <>
       <form id="login-form" onSubmit={handleLogin}>
         <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          name="username"
-          value={formData.username}
-          autoFocus
-          required
-          onChange={handleChange}
-        />
+        <input type="text" name="username" value={formData.username} autoFocus required onChange={handleChange} />
         <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          value={formData.password}
-          required
-          onChange={handleChange}
-        />
+        <input type="password" name="password" value={formData.password} required onChange={handleChange} />
         <button type="submit">Login</button>
         <br></br>
         <div>{user.message ? user.message : ""}</div>
