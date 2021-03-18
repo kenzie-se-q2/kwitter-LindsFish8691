@@ -16,3 +16,15 @@ export const logoutRequest = (token) => {
     headers: { Authorization: "Bearer " + token },
   }).then((res) => res.json());
 };
+
+export const userProfilePic = (username, password, token) => {
+  return fetch(baseURL + `users/${username}/picture`, {
+    method: "PUT",
+    headers: {
+      Authorization: "Bearer " + token,
+      "Content-Type": "multipart/form-data",
+    },
+  })
+    .then((res) => res.json())
+    .then((user) => console.log(user));
+};
