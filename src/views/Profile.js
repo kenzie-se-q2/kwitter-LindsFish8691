@@ -1,12 +1,10 @@
 // TODO: Create a Profile to display the current users information
 // TODO: Create a Profile to display the current users information
-import React, { useEffect } from "react";
+import React from "react";
 
 import { useState } from "react";
 
 function Profile() {
-  const baseURL = "http://kwitter-api-b.herokuapp.com";
-
   const [picture, setPicture] = useState("");
 
   function fileSelectedHandler(event) {
@@ -32,7 +30,7 @@ function Profile() {
           multiple="false"
         />
 
-        <img src={fileSelectedHandler} />
+        <img src={fileSelectedHandler} alt="" />
         <br />
 
         <label>Username</label>
