@@ -5,7 +5,6 @@ import PopUp from "./Popup.js";
 
 function Registration(props) {
   //const dispatch = useStore((state) => state.dispatch);
-
   const [buttonPopup, setButtonPopup] = useState(false);
   const [userData, setUserdata] = useState({
     username: "",
@@ -15,7 +14,14 @@ function Registration(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createUser(userData.username, userData.displayName, userData.password);
+    createUser(userData.username, userData.displayName, userData.password)
+      .then(() => setButtonPopup(true))
+      .catch((e) => {
+        alert("Username may already be taken");
+        <PopUp trigger={buttonPopup} setTrigger={setButtonPopup}>
+          <h3>Please try again</h3>
+        </PopUp>;
+      });
   };
 
   const handleChange = (e) => {

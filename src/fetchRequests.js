@@ -1,4 +1,5 @@
-const baseURL = "http://kwitter-api-b.herokuapp.com/";
+import Registration from "./components/registration/Registration.js";
+import PopUp from "./components/registration/Popup.js";
 export const baseURL = "https://kwitter-api-b.herokuapp.com/";
 
 export const loginRequest = (username, password) => {
@@ -35,7 +36,7 @@ export const userProfilePic = (username, password, token) => {
 };
 
 export const createUser = (username, displayName, password) => {
-  fetch(baseURL + "users", {
+  return fetch(baseURL + "users", {
     method: "POST",
     headers: { "Content-type": "application/json" },
     body: JSON.stringify({
@@ -51,12 +52,5 @@ export const createUser = (username, displayName, password) => {
       return res;
     })
     .then((res) => res.json())
-    .then((data) => console.log(data))
-    .then(() => setButtonPopup(true))
-    .catch((e) => {
-      alert("Username may already be taken");
-      <PopUp>
-        <h3>Please try again</h3>
-      </PopUp>;
-    });
+    .then((data) => console.log(data));
 };
