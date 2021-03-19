@@ -33,6 +33,7 @@ export const userProfilePic = (username, password, token) => {
     .then((res) => res.json())
     .then((user) => console.log(user));
 };
+
 export const createUser = async (username, displayName, password) => {
   const res = await fetch(baseURL + "users", {
     method: "POST",
@@ -70,8 +71,4 @@ export const createUser = async (username, displayName, password) => {
 //     .then((res) => res.json())
 //     .then((data) => console.log(data));
 // };
-
-
-
-
 

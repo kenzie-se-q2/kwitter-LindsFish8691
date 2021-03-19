@@ -52,10 +52,3 @@ import { getMessages } from '../fetchRequests';
  
   export default MessageList;
  
-
- 
-
-
-
-
-
