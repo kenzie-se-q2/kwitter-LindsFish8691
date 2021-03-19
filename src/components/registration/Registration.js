@@ -16,9 +16,9 @@ function Registration(props) {
     e.preventDefault();
     createUser(userData.username, userData.displayName, userData.password)
       .then(() => setButtonPopup(true))
-      .catch((e) => {
+      .catch(() => {
         alert("Username may already be taken");
-        <PopUp trigger={buttonPopup} setTrigger={setButtonPopup}>
+        <PopUp>
           <h3>Please try again</h3>
         </PopUp>;
       });
@@ -45,7 +45,7 @@ function Registration(props) {
         <button>submit & open popup</button>
       </form>
       <PopUp trigger={buttonPopup} setTrigger={setButtonPopup}>
-        <h3>{`Welcome ${userData.username}, to the blah blah page.`}</h3>
+        <h3>{`Welcome ${userData.username}, to the forum.`}</h3>
       </PopUp>
     </div>
   );
