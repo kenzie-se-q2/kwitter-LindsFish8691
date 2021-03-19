@@ -1,5 +1,3 @@
-import Registration from "./components/registration/Registration.js";
-import PopUp from "./components/registration/Popup.js";
 export const baseURL = "https://kwitter-api-b.herokuapp.com/";
 
 export const loginRequest = (username, password) => {
@@ -35,8 +33,8 @@ export const userProfilePic = (username, password, token) => {
     .then((user) => console.log(user));
 };
 
-export const createUser = (username, displayName, password) => {
-  return fetch(baseURL + "users", {
+export const createUser = async (username, displayName, password) => {
+  const res = await fetch(baseURL + "users", {
     method: "POST",
     headers: { "Content-type": "application/json" },
     body: JSON.stringify({
@@ -44,13 +42,31 @@ export const createUser = (username, displayName, password) => {
       displayName,
       password,
     }),
-  })
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error("bad response", res);
-      }
-      return res;
-    })
-    .then((res) => res.json())
-    .then((data) => console.log(data));
+  });
+  if (!res.ok) {
+    throw new Error("bad response", res);
+  }
+  const res_1 = res;
+  const data = await res_1.json();
+  return console.log(data);
 };
+
+// export const createUser = (username, displayName, password) => {
+//   return fetch(baseURL + "users", {
+//     method: "POST",
+//     headers: { "Content-type": "application/json" },
+//     body: JSON.stringify({
+//       username,
+//       displayName,
+//       password,
+//     }),
+//   })
+//     .then((res) => {
+//       if (!res.ok) {
+//         throw new Error("bad response", res);
+//       }
+//       return res;
+//     })
+//     .then((res) => res.json())
+//     .then((data) => console.log(data));
+// };
