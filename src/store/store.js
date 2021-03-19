@@ -14,6 +14,8 @@ if (localStorage) {
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const GET_MESSAGES = "GET_MESSAGES";
+export const LIKES = "LIKES";
+
 
 // define reducer function
 const reducer = (state, action, pop) => {
@@ -24,7 +26,9 @@ const reducer = (state, action, pop) => {
       return { user: {} };
     case GET_MESSAGES:
       return { ...state, messages: action.payload };  
-    default:
+    case LIKES:
+        return{ user: action.payload }
+        default:
       return state;
   }
 };

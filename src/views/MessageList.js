@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import MessageItem from '../components/MessageItem';
-import { useStore, GET_MESSAGES } from '../store/store';
-import { getMessages } from '../fetchRequests';
+import { useStore, GET_MESSAGES, LIKES } from '../store/store';
+import { getMessages, likeRequest } from '../fetchRequests';
+
+
 
 
  function MessageList(props) {
    const dispatch = useStore((state) => state.dispatch);
 
+   const likes = useStore((state) => state.likes);
+    
    const store= useStore()
+
    useEffect(() => {
        getMessages().then((messagesData)=>{
          dispatch({ type: GET_MESSAGES, payload: messagesData.messages});
@@ -15,8 +20,17 @@ import { getMessages } from '../fetchRequests';
        })
     console.log(store);
    }, [])
+
+
+   const handleLikes = (e) => {
+    e.preventDefault();
+    likeRequest().then((likesData)=>{
+      dispatch({type: LIKES, payload:likesData.likes})
+      console.log(likesData.likes);
+    });
+  };
+   
  
-      // console.log(messages);
       return (
           <section className="Messages">
           <ul className="MessageList">
@@ -30,11 +44,14 @@ import { getMessages } from '../fetchRequests';
              />
              ))}
        </ul>
+       <button className="Likes" onClick={handleLikes}>like</button>
      </section>
+    
   )};
  
  
   export default MessageList;
+  
  
 
 

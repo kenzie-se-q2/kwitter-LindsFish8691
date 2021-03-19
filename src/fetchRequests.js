@@ -23,16 +23,14 @@ export const getMessages = () => {
   return fetch(baseURL + "messages").then((res) => res.json());
 };
 
-export const userProfilePic = (username, password, token) => {
-  return fetch(baseURL + `users/${username}/picture`, {
-    method: "PUT",
-    headers: {
-      Authorization: "Bearer " + token,
-      "Content-Type": "multipart/form-data",
-    },
-  })
-    .then((res) => res.json())
-    .then((user) => console.log(user));
+export const likeRequest = (like) => {
+  return fetch(baseURL + "/likes",{
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      like,
+    }),
+  }).then((res) => res.json());
 };
 
 export const createUser = (username, displayName, password) => {
@@ -53,4 +51,16 @@ export const createUser = (username, displayName, password) => {
     })
     .then((res) => res.json())
     .then((data) => console.log(data));
+};
+
+export const userProfilePic = (username, password, token) => {
+  return fetch(baseURL + `users/${username}/picture`, {
+    method: "PUT",
+    headers: {
+      Authorization: "Bearer " + token,
+      "Content-Type": "multipart/form-data",
+    },
+  })
+    .then((res) => res.json())
+    .then((user) => console.log(user));
 };
