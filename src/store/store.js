@@ -17,6 +17,8 @@ export const GET_MESSAGES = "GET_MESSAGES";
 export const LIKES = "LIKES";
 
 
+export const GET_LIKES = "GET_LIKES";
+
 // define reducer function
 const reducer = (state, action, pop) => {
   switch (action.type) {
@@ -28,7 +30,9 @@ const reducer = (state, action, pop) => {
       return { ...state, messages: action.payload };  
     case LIKES:
         return{ user: action.payload }
-        default:
+       case GET_LIKES:
+      return { ...state, likes: action.payload };
+    default:
       return state;
   }
 };
