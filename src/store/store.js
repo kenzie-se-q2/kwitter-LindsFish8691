@@ -14,6 +14,7 @@ if (localStorage) {
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const GET_MESSAGES = "GET_MESSAGES";
+export const GET_USERS = "GET_USERS";
 
 // define reducer function
 const reducer = (state, action, pop) => {
@@ -23,7 +24,9 @@ const reducer = (state, action, pop) => {
     case LOGOUT:
       return { user: {} };
     case GET_MESSAGES:
-      return { ...state, messages: action.payload };  
+      return { ...state, messages: action.payload };
+    case GET_USERS:
+      return { ...state, uesrs: action.payload };
     default:
       return state;
   }
@@ -31,6 +34,4 @@ const reducer = (state, action, pop) => {
 
 // create useStore hook
 
-export const useStore = create(
-  persist(devtools(redux(reducer, initialState)), { name: "storage" })
-);
+export const useStore = create(persist(devtools(redux(reducer, initialState)), { name: "storage" }));

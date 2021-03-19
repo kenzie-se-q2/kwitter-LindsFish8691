@@ -51,6 +51,10 @@ export const createUser = async (username, displayName, password) => {
   return console.log(data);
 };
 
+export const getUserList = () => {
+  return fetch(baseURL + "users").then((res) => res.json());
+};
+
 // export const createUser = (username, displayName, password) => {
 //   return fetch(baseURL + "users", {
 //     method: "POST",
