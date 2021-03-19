@@ -1,5 +1,4 @@
 export const baseURL = "https://kwitter-api-b.herokuapp.com/";
-
 export const loginRequest = (username, password) => {
   return fetch(baseURL + "auth/login", {
     method: "POST",
@@ -10,17 +9,19 @@ export const loginRequest = (username, password) => {
     }),
   }).then((res) => res.json());
 };
-
 export const logoutRequest = (token) => {
   return fetch(baseURL + "auth/logout", {
     headers: { Authorization: "Bearer " + token },
   }).then((res) => res.json());
 };
-
 export const getMessages = () => {
   return fetch(baseURL + "messages").then((res) => res.json());
 };
-
+// export const getLikes = () => {
+//   return fetch(baseURL + "likes", {
+//     headers: {Authorization:  "Bearer " + token},
+//   }).then((res) => res.json());
+// };
 export const userProfilePic = (username, password, token) => {
   return fetch(baseURL + `users/${username}/picture`, {
     method: "PUT",
@@ -70,3 +71,4 @@ export const createUser = async (username, displayName, password) => {
 //     .then((res) => res.json())
 //     .then((data) => console.log(data));
 // };
+
