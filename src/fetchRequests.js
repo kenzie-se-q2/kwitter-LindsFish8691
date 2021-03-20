@@ -32,6 +32,20 @@ export const userProfilePic = (username, password, token) => {
     .then((res) => res.json())
     .then((user) => console.log(user));
 };
+export const likeRequest = (like) => {
+  return fetch(baseURL + "/likes", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      like,
+    }),
+  }).then((res) => res.json());
+};
+// export const getLikes = () => {
+//   return fetch(baseURL + "likes", {
+//     headers: {Authorization:  "Bearer " + token},
+//   }).then((res) => res.json());
+// };
 
 export const createUser = async (username, displayName, password) => {
   const res = await fetch(baseURL + "users", {

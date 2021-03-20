@@ -15,7 +15,7 @@ function App() {
         <Route path="/messages" component={MessageList} />
         <Route path="/users" component={UserList} />
         <Route exact path="/registration" component={Registration} />
-        <Route path="/profile/" component={Profile} />
+        <Route path="/profile" component={Profile} />
         <Route component={NotFound} />
       </Switch>
     </div>
