@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Card, Button } from "react-bootstrap";
 import Moment from "moment";
 import User from "./User.js";
