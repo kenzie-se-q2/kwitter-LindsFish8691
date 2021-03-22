@@ -27,15 +27,6 @@ export const likeRequest = (like) => {
     }),
   }).then((res) => res.json());
 };
-export const likeRequest = (like) => {
-  return fetch(baseURL + "/likes", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      like,
-    }),
-  }).then((res) => res.json());
-};
 
 // export const getLikes = () => {
 //   return fetch(baseURL + "likes", {
