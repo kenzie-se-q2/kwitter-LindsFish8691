@@ -54,3 +54,11 @@ export const createUser = (username, displayName, password) => {
     .then((res) => res.json())
     .then((data) => console.log(data));
 };
+
+export const getUser = (username) => {
+  return fetch(baseURL + `users/${username}`).then((res) => res.json());
+};
+
+export const patchUser = (token, username) => {
+  return fetch(baseURL + `users/${username}`).then((res) => res.json());
+};
