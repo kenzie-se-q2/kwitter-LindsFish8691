@@ -7,13 +7,9 @@ import { getMessages, likeRequest } from "../fetchRequests";
 function MessageList(props) {
   const dispatch = useStore((state) => state.dispatch);
 
-  const likes = useStore((state) => state.likes);
 
   const store = useStore();
 
-  function MessageList(props) {
-    const dispatch = useStore((state) => state.dispatch);
-    const store = useStore();
 
     useEffect(() => {
       getMessages().then((messagesData) => {
@@ -22,13 +18,7 @@ function MessageList(props) {
       });
     }, []);
 
-    const handleLikes = (e) => {
-      e.preventDefault();
-      likeRequest().then((likesData) => {
-        dispatch({ type: LIKES, payload: likesData.likes });
-        console.log(likesData.likes);
-      });
-    };
+   
 
     //  function GetLikes(props) {
     //    useEffect(() => {
@@ -61,12 +51,10 @@ function MessageList(props) {
               />
             ))}
         </ul>
-        <button className="Likes" onClick={handleLikes}>
-          like
-        </button>
+       
       </section>
     );
   }
-}
+
 
 export default MessageList;

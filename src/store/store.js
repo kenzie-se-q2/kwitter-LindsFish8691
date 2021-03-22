@@ -29,7 +29,7 @@ const reducer = (state, action, pop) => {
     case GET_MESSAGES:
       return { ...state, messages: action.payload };  
     case LIKES:
-        return{ user: action.payload }
+        return{ ... state, user: action.payload }
        case GET_LIKES:
       return { ...state, likes: action.payload };
     default:
