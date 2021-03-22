@@ -18,21 +18,20 @@ export const getMessages = () => {
   return fetch(baseURL + "messages").then((res) => res.json());
 };
 
-
 export const likeRequest = (like) => {
-  return fetch(baseURL + "/likes",{
+  return fetch(baseURL + "/likes", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       like,
     }),
   }).then((res) => res.json());
+};
 // export const getLikes = () => {
 //   return fetch(baseURL + "likes", {
 //     headers: {Authorization:  "Bearer " + token},
 //   }).then((res) => res.json());
 // };
-
 
 export const createUser = async (username, displayName, password) => {
   const res = await fetch(baseURL + "users", {
@@ -82,5 +81,3 @@ export const userProfilePic = (username, password, token) => {
 //     .then((res) => res.json())
 //     .then((data) => console.log(data));
 // };
-
-
