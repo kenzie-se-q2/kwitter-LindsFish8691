@@ -24,6 +24,8 @@ function MessageItem(props) {
           <Card.Title>{props.username}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">{Moment(props.createdAt).format("MM-DD-YYYY")}</Card.Subtitle>
           <Card.Text>{props.text}</Card.Text>
+          <Card.Text>{props.likes}</Card.Text>
+
           <Card.Link to="#">
             <Link to={`users/${props.username}`} render={(props) => <User {...props} />}>
               Go to profile
