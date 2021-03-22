@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import MessageItem from "../components/MessageItem";
 
-import { useStore, GET_MESSAGES, LIKES } from "../store/store";
+import { useStore, GET_MESSAGES } from "../store/store";
 import { getMessages, likeRequest } from "../fetchRequests";
 
 function MessageList(props) {
@@ -15,13 +15,13 @@ function MessageList(props) {
     });
   }, []);
 
-  const handleLikes = (e) => {
-    e.preventDefault();
-    likeRequest().then((likesData) => {
-      dispatch({ type: LIKES, payload: likesData.likes });
-      console.log(likesData.likes);
-    });
-  };
+  // const handleLikes = (e) => {
+  //   e.preventDefault();
+  //   likeRequest().then((likesData) => {
+  //     dispatch({ type: LIKES, payload: likesData.likes });
+  //     console.log(likesData.likes);
+  //   });
+  // };
 
   //  function GetLikes(props) {
   //    useEffect(() => {
@@ -54,9 +54,9 @@ function MessageList(props) {
             />
           ))}
       </ul>
-      <button className="Likes" onClick={handleLikes}>
-        like
-      </button>
+      {/* <button className="Likes" onClick={handleLikes}> */}
+      {/* like
+      </button> */}
     </section>
   );
 }

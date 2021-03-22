@@ -41,6 +41,7 @@ export const likeRequest = (like) => {
     }),
   }).then((res) => res.json());
 };
+
 // export const getLikes = () => {
 //   return fetch(baseURL + "likes", {
 //     headers: {Authorization:  "Bearer " + token},
@@ -67,6 +68,10 @@ export const createUser = async (username, displayName, password) => {
 
 export const getUserList = () => {
   return fetch(baseURL + "users").then((res) => res.json());
+};
+
+export const getUser = (username) => {
+  return fetch(baseURL + `users/${username}`).then((res) => res.json());
 };
 
 // export const createUser = (username, displayName, password) => {

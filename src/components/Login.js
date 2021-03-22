@@ -20,7 +20,6 @@ function Login(props) {
     loginRequest(formData.username, formData.password).then((userData) => {
       dispatch({ type: LOGIN, payload: userData });
     });
-
   };
 
   const handleChange = (e) => {

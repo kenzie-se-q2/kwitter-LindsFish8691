@@ -8,8 +8,7 @@ function Menu(props) {
   const dispatch = useStore((state) => state.dispatch);
 
   const logout = (e) => {
-    logoutRequest(user.token).then(()=>dispatch({type:"LOGOUT"}));
-    
+    logoutRequest(user.token).then(() => dispatch({ type: "LOGOUT" }));
   };
 
   return (
@@ -21,6 +20,6 @@ function Menu(props) {
       </div>
     </div>
   );
-};
+}
 
 export default Menu;

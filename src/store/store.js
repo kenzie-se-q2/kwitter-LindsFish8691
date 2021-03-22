@@ -26,7 +26,7 @@ const reducer = (state, action, pop) => {
     case GET_MESSAGES:
       return { ...state, messages: action.payload };
     case GET_USERS:
-      return { ...state, uesrs: action.payload };
+      return { ...state, users: action.payload };
     default:
       return state;
   }
