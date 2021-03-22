@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
 import MessageItem from "../components/MessageItem";
-
 import { useStore, GET_MESSAGES, LIKES } from "../store/store";
 import { getMessages, likeRequest } from "../fetchRequests";
 
 function MessageList(props) {
   const dispatch = useStore((state) => state.dispatch);
-
   const store = useStore();
 
   useEffect(() => {

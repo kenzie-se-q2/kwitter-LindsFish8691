@@ -20,16 +20,7 @@ function MessageItem(props) {
           like
         </button>
     </div>
-  )
-};
+  );
+}
 
-export default MessageItem
-
-  
-  
-  
-        
-
-        
-        
-        
+export default MessageItem;
