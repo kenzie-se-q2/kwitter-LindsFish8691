@@ -16,7 +16,6 @@ export const LOGOUT = "LOGOUT";
 export const GET_MESSAGES = "GET_MESSAGES";
 export const LIKES = "LIKES";
 
-
 export const GET_LIKES = "GET_LIKES";
 
 // define reducer function
@@ -27,10 +26,10 @@ const reducer = (state, action, pop) => {
     case LOGOUT:
       return { user: {} };
     case GET_MESSAGES:
-      return { ...state, messages: action.payload };  
+      return { ...state, messages: action.payload };
     case LIKES:
-        return{ ... state, user: action.payload }
-       case GET_LIKES:
+      return { ...state, user: action.payload };
+    case GET_LIKES:
       return { ...state, likes: action.payload };
     default:
       return state;
@@ -39,6 +38,4 @@ const reducer = (state, action, pop) => {
 
 // create useStore hook
 
-export const useStore = create(
-  persist(devtools(redux(reducer, initialState)), { name: "storage" })
-);
+export const useStore = create(persist(devtools(redux(reducer, initialState)), { name: "storage" }));

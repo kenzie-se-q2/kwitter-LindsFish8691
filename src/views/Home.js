@@ -2,9 +2,7 @@ import React from "react";
 import Login from "../components/Login";
 import Menu from "../components/Menu";
 import { useStore } from "../store/store";
-import Profile from "./Profile"
-
-
+import Profile from "./Profile";
 
 function Home(props) {
   const user = useStore((state) => state.user);
@@ -18,3 +16,5 @@ function Home(props) {
 }
 
 export default Home;
+
+// line 13 !user.token &&

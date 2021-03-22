@@ -8,8 +8,7 @@ function Menu(props) {
   const dispatch = useStore((state) => state.dispatch);
 
   const logout = (e) => {
-    logoutRequest(user.token).then(()=>dispatch({type:"LOGOUT"}));
-    
+    logoutRequest(user.token).then(() => dispatch({ type: "LOGOUT" }));
   };
 
   return (
@@ -17,7 +16,7 @@ function Menu(props) {
       <h1>Kwitter</h1>
       <div id="menu-links">
         <Link to="/messages">Messages</Link>
-        
+
         <div id="profile-links">
           <Link to="/profile">Profile</Link>
         </div>
@@ -25,6 +24,7 @@ function Menu(props) {
       </div>
     </div>
   );
-};
+}
 
 export default Menu;
+//line 23 user.token &&
