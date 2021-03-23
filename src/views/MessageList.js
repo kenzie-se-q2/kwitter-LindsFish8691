@@ -14,23 +14,6 @@ function MessageList(props) {
     });
   }, []);
 
-  //  function GetLikes(props) {
-  //    useEffect(() => {
-  //      getLikes().then((likesData)=>{
-  //      dispatch({ type: GET_LIKES, payload: likesData.likes });
-
-  //      })
-  //    }, []);
-  //  }
-  //  {
-  //   "like"= {
-  //     "id": 0,
-  //     "username": "",
-  //     "messageId": 0,
-  //     "createdAt": ""
-  //   },
-  // };
-
   return (
     <section className="Messages">
       <ul className="MessageList">
@@ -41,7 +24,7 @@ function MessageList(props) {
               text={props.text}
               username={props.username}
               createdAt={props.createdAt}
-              //  likes={props.likes}
+              likes={props.likes}
             />
           ))}
       </ul>

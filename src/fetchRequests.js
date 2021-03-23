@@ -28,12 +28,6 @@ export const likeRequest = (like) => {
   }).then((res) => res.json());
 };
 
-// export const getLikes = () => {
-//   return fetch(baseURL + "likes", {
-//     headers: {Authorization:  "Bearer " + token},
-//   }).then((res) => res.json());
-// };
-
 export const createUser = async (username, displayName, password) => {
   const res = await fetch(baseURL + "users", {
     method: "POST",

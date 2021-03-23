@@ -9,14 +9,15 @@ import User from "../components/UserCard/User.js";
 function MessageItem(props) {
   const dispatch = useStore((state) => state.dispatch);
   const likes = useStore((state) => state.likes);
-
+;
   const handleLikes = (e) => {
     e.preventDefault();
     likeRequest().then((likesData) => {
       dispatch({ type: LIKES, payload: likesData.likes });
       console.log(likesData.likes);
     });
-  };
+  }
+
   return (
     <div>
       <Card style={{ width: "18rem" }}>
@@ -39,13 +40,7 @@ function MessageItem(props) {
       </Card>
     </div>
   );
-}
+  }
 
-export default MessageItem;
-
-{
-  /* {props.username},{props.text},{props.id},{props.createdAt} 
-      <button className="Likes" onClick={handleLikes}>
-          like
-</button>*/
-}
+export default MessageItem
+  
