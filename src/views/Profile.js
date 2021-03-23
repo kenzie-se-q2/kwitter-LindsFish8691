@@ -1,13 +1,16 @@
 // TODO: Create a Profile to display the current users information
 // TODO: Create a Profile to display the current users information
 import React, { useEffect } from "react";
-import { Form, Button, Container } from "react-bootstrap";
 import { useState } from "react";
-import { getUser } from "../fetchRequests.js";
+import { Form, Button, Container } from "react-bootstrap";
+import { useStore } from "../store/store";
+import { getUser, patchUser, userProfilePic } from "../fetchRequests.js";
 
 function Profile({ match }) {
+  let baseURL2 = "https://socialapp-api.herokuapp.com";
+  const authUser = useStore((state) => state.user);
   const [user, setUser] = useState({});
-
+  const [username, setUsername] = useState("");
   const [about, setAbout] = useState("");
   const [createdAt, setCreatedAt] = useState("");
   const [picture, setPicture] = useState("");
@@ -16,44 +19,53 @@ function Profile({ match }) {
   useEffect(() => {
     getUser(match.params.username).then((data) => {
       setUser(data.user);
+      setUsername(data.user.username);
       setAbout(data.user.about);
       setCreatedAt(data.user.createdAt);
     });
   }, [match]);
-
+  /*
   function fileSelectedHandler(event) {
     setPicture(picture.event);
   }
-
+*/
   function fileUploadHandler(event) {
-    const [file] = event.target.files;
-    if (file) {
-      console.log(file);
-    }
+    userProfilePic(authUser.token, authUser.username, picture).then((res) =>
+      console.log(res)
+    );
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const newUserInfo = {
+      about,
+      username,
+    };
+    patchUser(authUser.token, user, newUserInfo).then((data) => {
+      setUser(data.user);
+    });
   }
 
   return (
     <Container className="Profile">
-      <h1>{user.username}'s Profile</h1>
-      <input type="file" onChange={fileSelectedHandler} />
+      <h1>{username}'s Profile</h1>
+
       <input
         type="file"
-        accept="image/*"
-        onChange={fileUploadHandler}
-        multiple="false"
+        onChange={(event) => setPicture(event.target.files[0])}
       />
 
-      <img src={fileSelectedHandler} alt="" />
-      <br />
+      <button onClick={fileUploadHandler}>Upload</button>
+      <img src={baseURL2 + user.pictureLocation} />
 
       <p>About Me:</p>
-      <p>{user.about}</p>
+      <p>{about}</p>
 
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Username</Form.Label>
           <Form.Control
-            value={user.username}
+            value={username}
             type="text"
             placeholder="My username"
           />
