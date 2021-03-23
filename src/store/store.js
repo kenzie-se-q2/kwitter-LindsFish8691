@@ -22,7 +22,6 @@ const reducer = (state, action) => {
       return { ...state, messages: action.payload };
     case LIKE:
       return { ...state, like: action.payload };
-
     default:
       return state;
   }

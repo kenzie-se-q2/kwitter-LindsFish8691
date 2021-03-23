@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import MessageItem from "../components/MessageItem";
 import { useStore, GET_MESSAGES } from "../store/store";
 import { getMessages } from "../fetchRequests";
+import Menu from "../components/Menu";
 
 function MessageList(props) {
   const dispatch = useStore((state) => state.dispatch);
@@ -14,6 +15,8 @@ function MessageList(props) {
   }, [dispatch, store.messages]);
 
   return (
+    <div>
+      <Menu />
     <section className="Messages">
       <ul className="MessageList">
         {store.messages &&
@@ -28,6 +31,8 @@ function MessageList(props) {
           ))}
       </ul>
     </section>
+    </div>
+
   );
 }
 

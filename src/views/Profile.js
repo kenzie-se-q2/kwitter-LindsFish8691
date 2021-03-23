@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 
 import { useState } from "react";
+import Menu from "../components/Menu";
 
 function Profile() {
   const baseURL = "http://kwitter-api-b.herokuapp.com";
@@ -21,7 +22,10 @@ function Profile() {
   }
 
   return (
+    <div>
+      <Menu />
     <div className="Profile">
+      
       <h1>My Profile</h1>
       <form style={{ display: "block", justifyContent: "center" }}>
         <input type="file" onChange={fileSelectedHandler} />
@@ -47,6 +51,7 @@ function Profile() {
         <br />
         <label>Profile created:</label>
       </form>
+    </div>
     </div>
   );
 }
