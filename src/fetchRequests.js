@@ -24,13 +24,20 @@ export const getMessages = () => {
 export const likeRequest = (token, messageId) => {
   return fetch(baseURL + "likes", {
     method: "POST",
-    headers: { Authorization:  "Bearer " + token, "Content-Type": "application/json" },
+    headers: { Authorization: "Bearer " + token, "Content-Type": "application/json" },
     body: JSON.stringify({
-      messageId
-    })
+      messageId,
+    }),
   }).then((res) => res.json());
 };
 
+export const unlike = (token, id) => {
+  return fetch(`${baseURL}likes/${id}`, {
+    method: "DELETE",
+    headers: { Authorization: "Bearer " + token, "Content-Type": "application/json" },
+    Body: JSON.stringify({ id }),
+  }).then((res) => res.json());
+};
 
 export const createUser = async (username, displayName, password) => {
   const res = await fetch(baseURL + "users", {

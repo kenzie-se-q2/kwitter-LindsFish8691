@@ -13,7 +13,6 @@ function MessageList(props) {
     });
   }, [dispatch, store.messages]);
 
-
   return (
     <section className="Messages">
       <ul className="MessageList">
@@ -24,7 +23,7 @@ function MessageList(props) {
               text={props.text}
               username={props.username}
               createdAt={props.createdAt}
-               likes={props.likes.length}
+              likes={props.likes}
             />
           ))}
       </ul>

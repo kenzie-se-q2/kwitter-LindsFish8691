@@ -5,13 +5,11 @@ import { devtools, redux } from "zustand/middleware";
 
 let initialState = { user: { token: "" }, messages: [] };
 
-
 // set action types
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const GET_MESSAGES = "GET_MESSAGES";
 export const LIKE = "LIKE";
-
 
 // define reducer function
 const reducer = (state, action) => {
