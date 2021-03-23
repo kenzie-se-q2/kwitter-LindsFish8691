@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import MessageItem from "../components/MessageItem";
-import { useStore, GET_MESSAGES, LIKES } from "../store/store";
-import { getMessages, likeRequest } from "../fetchRequests";
+import { useStore, GET_MESSAGES } from "../store/store";
+import { getMessages } from "../fetchRequests";
 
 function MessageList(props) {
   const dispatch = useStore((state) => state.dispatch);
@@ -10,26 +10,9 @@ function MessageList(props) {
   useEffect(() => {
     getMessages().then((messagesData) => {
       dispatch({ type: GET_MESSAGES, payload: messagesData.messages });
-      console.log(messagesData.messages);
     });
-  }, []);
+  }, [dispatch, store.messages]);
 
-  //  function GetLikes(props) {
-  //    useEffect(() => {
-  //      getLikes().then((likesData)=>{
-  //      dispatch({ type: GET_LIKES, payload: likesData.likes });
-
-  //      })
-  //    }, []);
-  //  }
-  //  {
-  //   "like"= {
-  //     "id": 0,
-  //     "username": "",
-  //     "messageId": 0,
-  //     "createdAt": ""
-  //   },
-  // };
 
   return (
     <section className="Messages">
@@ -41,7 +24,7 @@ function MessageList(props) {
               text={props.text}
               username={props.username}
               createdAt={props.createdAt}
-              //  likes={props.likes}
+               likes={props.likes.length}
             />
           ))}
       </ul>
