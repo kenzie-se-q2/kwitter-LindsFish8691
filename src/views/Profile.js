@@ -21,6 +21,13 @@ function Profile() {
     }
   }
 
+  useEffect(()=>{
+    console.log(window.localStorage)
+    if(!window.localStorage.user){
+      window.location.href = "/"
+    }
+  },[])
+
   return (
     <div>
       <Menu />

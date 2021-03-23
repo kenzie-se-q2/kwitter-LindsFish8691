@@ -14,6 +14,13 @@ function MessageList(props) {
     });
   }, [dispatch, store.messages]);
 
+  useEffect(()=>{
+    console.log(window.localStorage)
+    if(!window.localStorage.user){
+      window.location.href = "/"
+    }
+  },[])
+
   return (
     <div>
       <Menu />
