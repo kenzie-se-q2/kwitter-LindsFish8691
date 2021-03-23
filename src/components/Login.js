@@ -19,8 +19,7 @@ function Login(props) {
 
     loginRequest(formData.username, formData.password).then((userData) => {
       dispatch({ type: LOGIN, payload: userData });
-      let userState = window.localStorage.setItem("user", userData);
-        JSON.stringify(userState)
+      window.localStorage.setItem("user", JSON.stringify(userData));
     });
   };
 
