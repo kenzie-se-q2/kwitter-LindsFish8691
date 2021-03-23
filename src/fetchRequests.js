@@ -1,4 +1,5 @@
 export const baseURL = "https://kwitter-api-b.herokuapp.com/";
+
 export const loginRequest = (username, password) => {
   return fetch(baseURL + "auth/login", {
     method: "POST",
@@ -9,30 +10,27 @@ export const loginRequest = (username, password) => {
     }),
   }).then((res) => res.json());
 };
+
 export const logoutRequest = (token) => {
   return fetch(baseURL + "auth/logout", {
     headers: { Authorization: "Bearer " + token },
   }).then((res) => res.json());
 };
+
 export const getMessages = () => {
   return fetch(baseURL + "messages").then((res) => res.json());
 };
 
-export const likeRequest = (like) => {
-  return fetch(baseURL + "/likes", {
+export const likeRequest = (token, messageId) => {
+  return fetch(baseURL + "likes", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { Authorization:  "Bearer " + token, "Content-Type": "application/json" },
     body: JSON.stringify({
-      like,
-    }),
+      messageId
+    })
   }).then((res) => res.json());
 };
 
-// export const getLikes = () => {
-//   return fetch(baseURL + "likes", {
-//     headers: {Authorization:  "Bearer " + token},
-//   }).then((res) => res.json());
-// };
 
 export const createUser = async (username, displayName, password) => {
   const res = await fetch(baseURL + "users", {
@@ -71,22 +69,3 @@ export const userProfilePic = (username, password, token) => {
     .then((res) => res.json())
     .then((user) => console.log(user));
 };
-// export const createUser = (username, displayName, password) => {
-//   return fetch(baseURL + "users", {
-//     method: "POST",
-//     headers: { "Content-type": "application/json" },
-//     body: JSON.stringify({
-//       username,
-//       displayName,
-//       password,
-//     }),
-//   })
-//     .then((res) => {
-//       if (!res.ok) {
-//         throw new Error("bad response", res);
-//       }
-//       return res;
-//     })
-//     .then((res) => res.json())
-//     .then((data) => console.log(data));
-// };
