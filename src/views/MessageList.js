@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import MessageItem from "../components/MessageItem";
-import { useStore, GET_MESSAGES, LIKES } from "../store/store";
-import { getMessages, likeRequest } from "../fetchRequests";
+import { useStore, GET_MESSAGES, LIKES, POST_MESSAGES } from "../store/store";
+import { getMessages, likeRequest, postMessages, deleteMessages } from "../fetchRequests";
 
 function MessageList(props) {
   const dispatch = useStore((state) => state.dispatch);
@@ -11,6 +11,18 @@ function MessageList(props) {
     getMessages().then((messagesData) => {
       dispatch({ type: GET_MESSAGES, payload: messagesData.messages });
       console.log(messagesData.messages);
+    });
+  }, []);
+
+  useEffect(() => {
+    postMessages().then((postMessagesData) => {
+      dispatch({ type: POST_MESSAGES, payload: postMessagesData.postMessages });
+    });
+  }, []);
+  
+  useEffect(() => {
+    deleteMessages().then((dEleteMessagesData) => {
+      dispatch({ type: DELETE_MESSAGES, payload: deleteMessagesData.deleteMessages });
     });
   }, []);
 

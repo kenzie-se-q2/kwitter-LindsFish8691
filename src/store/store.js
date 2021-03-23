@@ -15,8 +15,9 @@ export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const GET_MESSAGES = "GET_MESSAGES";
 export const LIKES = "LIKES";
-// export const POST = "POST";
-// export const DELETE = "DELETE";
+export const POST_MESSAGE = "POST_MESSAGE";
+export const DELETE_MESSAGE = "DELETE_MESSAGE";
+// export const GET_MESSAGE_LIKES = "GET_MESSAGE_LIKES";
 
 
 
@@ -31,11 +32,11 @@ const reducer = (state, action, pop) => {
       return { ...state, messages: action.payload };
     case LIKES:
       return { ...state, user: action.payload };
-    // case POST:
-    //   return { ...state, user: action.payload };
-    // case Delete:
-    //     return { ...state, user: action.payload };
-    // case GET_LIKES:
+    case POST_MESSAGE:
+      return { ...state, message: action.payload };
+    case DELETE_MESSAGE:
+        return { ...state, message: action.payload };
+    // case GET_MESSAGE_LIKES:
     //   return { ...state, likes: action.payload };
     default:
       return state;

@@ -18,6 +18,26 @@ export const getMessages = () => {
   return fetch(baseURL + "messages").then((res) => res.json());
 };
 
+export const postMessage = (token, message) => {
+ return fetch(baseURL + "messages", {
+   method:"POST",
+   headers: { Authorization: "Bearer " + token, "Content-Type": "application/json" },
+   body: JSON.stringify({
+    message, 
+   }),
+ }).then((res) => res.json())
+};
+
+export const deleteMessages = (token, message) => {
+  return fetch(baseURL + "deleteMessages", {
+    method:"DELETE",
+    headers: { Authorization: "Bearer " + token, "Content-Type": "application/json" },
+    body: JSON.stringify({
+     deleteMessages, 
+    }),
+  }).then((res) => res.json())
+ };
+
 export const likeRequest = (like) => {
   return fetch(baseURL + "/likes", {
     method: "POST",
