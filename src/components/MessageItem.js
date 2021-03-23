@@ -42,5 +42,6 @@ function MessageItem(props) {
   );
   }
 
-export default MessageItem
+export default MessageItem;
+
   
