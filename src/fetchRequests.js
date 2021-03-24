@@ -96,6 +96,17 @@ export const postMessage = (token, text) => {
   }).then((res) => res.json());
 };
 
+export const removeMessage = (token, messageId) => {
+  return fetch(baseURL + `messages/${messageId}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + token,
+      "Content-Type": "application/json",
+    },
+    Body: JSON.stringify({ messageId }),
+  }).then((res) => res.json());
+};
+
 /*
 export const userProfilePic = (username, password, token) => {
   return fetch(baseURL + `users/${username}/picture`, {
