@@ -5,15 +5,14 @@ import { likeRequest } from "../fetchRequests";
 import { Card, Button } from "react-bootstrap";
 import Moment from "moment";
 import User from "../components/UserCard/User.js";
-import { GET_MESSAGES, POST_MESSAGES, DELETE_MESSAGES, GET_MESSAGE_LIKES } from "../store/store";
+import { GET_MESSAGES, POST_MESSAGES } from "../store/store";
 
 function MessageItem(props) {
   const dispatch = useStore((state) => state.dispatch);
-  const likes = useStore((state) => state.likes);
-  const postMessages = useStore((state) => state.postMessages);
-  const deleteMessages = useStore((state) => state.deleteMessages);
-  const getMessages = useStore((state) => state.getMessages);
+  const user = useStore((state) => state.user);
+  let likes = props.likes;
 
+ 
   const handleLikes = (e) => {
     e.preventDefault();
     likeRequest().then((likesData) => {
@@ -21,17 +20,16 @@ function MessageItem(props) {
       console.log(likesData.likes);
     });
   }
-  const handleGetMessages = (e) => {
-    getMessageRequest(MessageItem).then((getMessageData) => {
-      dispatch({ type: GET_MESSAGES, payload: getMessageData.getMessage });
-    });
-  } 
+ 
+
+
+
   
-  const handleDeleteMessage = (e) => {
-    deleteMessageRequest(message.token, id).then((deleteMessageData) => {
-      dispatch({ type: DELETE_MESSAGE, payload: deleteMessageData.deleteMessage});
-    });
-  }
+  // const handleDeleteMessage = (e) => {
+  //   deleteMessageRequest(message.token, id).then((deleteMessageData) => {
+  //     dispatch({ type: DELETE_MESSAGE, payload: deleteMessageData.deleteMessage});
+  //   });
+  // }
 
   return (
     <div>
@@ -51,17 +49,13 @@ function MessageItem(props) {
           <Button className="Likes" onClick={handleLikes}>
             like
           </Button>
-          <Button className=" POST_MESSAGES" onClick={handlePostMessages}>
-            Post
-          </Button>
-          <Button className="DELETE_MESSAGES" onClick={handleDeleteMessages}>
-            Delete
-          </Button>
         </Card.Body>
       </Card>
     </div>
   );
   }
+        
+          
 
 export default MessageItem;
 

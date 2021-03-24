@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import MessageItem from "../components/MessageItem";
-import { useStore, GET_MESSAGES, LIKES, POST_MESSAGES } from "../store/store";
-import { getMessages, likeRequest, postMessages, deleteMessages } from "../fetchRequests";
+import { useStore, GET_MESSAGES, POST_MESSAGE } from "../store/store";
+import { postMessage, getMessages } from "../fetchRequests";
+import PostMessage from "../components/MessageHandling/PostMessage.js";
 
 function MessageList(props) {
   const dispatch = useStore((state) => state.dispatch);
@@ -10,23 +11,25 @@ function MessageList(props) {
   useEffect(() => {
     getMessages().then((messagesData) => {
       dispatch({ type: GET_MESSAGES, payload: messagesData.messages });
-      console.log(messagesData.messages);
     });
-  }, []);
+  }, [dispatch, store.messages]);
+
 
   useEffect(() => {
     postMessage().then((postMessageData) => {
-      dispatch({ type: POST_MESSAGES, payload: postMessagesData.postMessage });
+      dispatch({ type: POST_MESSAGE, payload: postMessageData.postMessage });
     });
   }, []);
   
-  useEffect(() => {
-    deleteMessage().then((deleteMessageData) => {
-      dispatch({ type: DELETE_MESSAGE, payload: deleteMessageData.deleteMessage });
-    });
-  }, []);
+  // useEffect(() => {
+  //   deleteMessage().then((deleteMessageData) => {
+  //     dispatch({ type: DELETE_MESSAGE, payload: deleteMessageData.deleteMessage });
+  //   });
+  // }, []);
 
   return (
+    <div>
+      <PostMessage/>
     <section className="Messages">
       <ul className="MessageList">
         {store.messages &&
@@ -41,6 +44,7 @@ function MessageList(props) {
           ))}
       </ul>
     </section>
+    </div>
   );
 }
 
