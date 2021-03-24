@@ -18,7 +18,7 @@ function App() {
         <Route exact path="/users/:username" render={(props) => <User {...props} />} />
         <Route exact path="/registration" component={Registration} />
         <Route exact path="/profile" component={Profile} />
-        <Route path="/profile/:username" component={Profile} />
+        <Route exact path="/profile/:username" component={Profile} />
         <Route component={NotFound} />
       </Switch>
     </div>
