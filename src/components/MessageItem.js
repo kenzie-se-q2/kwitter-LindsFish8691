@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useStore, LIKE } from "../store/store";
-import { likeRequest, unlike } from "../fetchRequests";
+import { likeRequest, unlike, removeMessage } from "../fetchRequests";
 import { Card, Button } from "react-bootstrap";
 import Moment from "moment";
 import User from "../components/UserCard/User.js";
@@ -25,6 +25,10 @@ function MessageItem(props) {
     });
   };
 
+  const handleDelete = (e) => {
+    removeMessage(user.token, props.id);
+  };
+
   return (
     <div>
       <Card style={{ width: "18rem" }}>
@@ -41,6 +45,9 @@ function MessageItem(props) {
           <Card.Link href="#">Another Link</Card.Link>
           <Button className="Likes" onClick={handleLikes}>
             like/Unlike
+          </Button>
+          <Button variant="danger" onClick={handleDelete}>
+            Delete
           </Button>
         </Card.Body>
       </Card>
