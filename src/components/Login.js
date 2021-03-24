@@ -29,6 +29,12 @@ function Login(props) {
     setFormData((state) => ({ ...state, [inputName]: inputValue }));
   };
   
+  const clientId = clientId;
+
+  function handleGoogleLogin(e){
+    window.open() 
+
+  }
 
   return (
     <>
@@ -41,7 +47,7 @@ function Login(props) {
         <br></br>
         <div>{user.message ? user.message : ""}</div>
         <GoogleLogin
-        
+        clientId={clientId}
         />
         <br></br>
         <label>
