@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Form, Button, Container } from "react-bootstrap";
 import { useStore } from "../store/store";
 import { getUser, patchUser, userProfilePic } from "../fetchRequests.js";
+import Menu from "../components/Menu";
 
 function Profile({ match }) {
   let baseURL2 = "https://socialapp-api.herokuapp.com";
@@ -46,7 +47,17 @@ function Profile({ match }) {
     });
   }
 
+  useEffect(()=>{
+    console.log(window.localStorage)
+    if(!window.localStorage.user){
+      window.location.href = "/"
+    }
+  },[])
+
   return (
+  <div>
+   <Menu /> 
+   
     <Container className="Profile">
       <h1>{username}'s Profile</h1>
 
@@ -93,6 +104,7 @@ function Profile({ match }) {
         </Button>
       </Form>
     </Container>
+    </div> 
   );
 }
 

@@ -19,8 +19,8 @@ function Login(props) {
 
     loginRequest(formData.username, formData.password).then((userData) => {
       dispatch({ type: LOGIN, payload: userData });
+      window.localStorage.setItem("user", JSON.stringify(userData));
     });
-
   };
 
   const handleChange = (e) => {

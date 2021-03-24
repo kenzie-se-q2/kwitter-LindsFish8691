@@ -1,5 +1,3 @@
-import Registration from "./components/registration/Registration.js";
-import PopUp from "./components/registration/Popup.js";
 export const baseURL = "https://kwitter-api-b.herokuapp.com/";
 
 export const loginRequest = (username, password) => {
@@ -30,14 +28,29 @@ export const userProfilePic = (username, token, pictureData) => {
     method: "PUT",
     headers: {
       Authorization: "Bearer " + token,
-      "Content-Type": "multipart/form-data",
-    },
+      "Content-Type": "multipart/form-data" },
     body: formData,
+  })};
+export const likeRequest = (token, messageId) => {
+  return fetch(baseURL + "likes", {
+    method: "POST",
+    headers: { Authorization: "Bearer " + token, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      messageId,
+    }),
   }).then((res) => res.json());
 };
 
-export const createUser = (username, displayName, password) => {
-  return fetch(baseURL + "users", {
+export const unlike = (token, id) => {
+  return fetch(`${baseURL}likes/${id}`, {
+    method: "DELETE",
+    headers: { Authorization: "Bearer " + token, "Content-Type": "application/json" },
+    Body: JSON.stringify({ id }),
+  }).then((res) => res.json());
+};
+
+export const createUser = async (username, displayName, password) => {
+  const res = await fetch(baseURL + "users", {
     method: "POST",
     headers: { "Content-type": "application/json" },
     body: JSON.stringify({
@@ -45,15 +58,33 @@ export const createUser = (username, displayName, password) => {
       displayName,
       password,
     }),
+  });
+  if (!res.ok) {
+    throw new Error("bad response", res);
+  }
+  const res_1 = res;
+  const data = await res_1.json();
+  return console.log(data);
+};
+
+export const getUserList = () => {
+  return fetch(baseURL + "users").then((res) => res.json());
+};
+
+export const getUser = (username) => {
+  return fetch(baseURL + `users/${username}`).then((res) => res.json());
+};
+
+export const userProfilePic = (username, password, token) => {
+  return fetch(baseURL + `users/${username}/picture`, {
+    method: "PUT",
+    headers: {
+      Authorization: "Bearer " + token,
+      "Content-Type": "multipart/form-data",
+    },
   })
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error("bad response", res);
-      }
-      return res;
-    })
     .then((res) => res.json())
-    .then((data) => console.log(data));
+    .then((user) => console.log(user));
 };
 
 export const getUser = (username) => {
