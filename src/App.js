@@ -17,7 +17,8 @@ function App() {
         <Route exact path="/users" component={UserList} />
         <Route exact path="/users/:username" render={(props) => <User {...props} />} />
         <Route exact path="/registration" component={Registration} />
-        <Route path="/profile" component={Profile} />
+        <Route exact path="/profile" component={Profile} />
+        <Route path="/profile/:username" component={Profile} />
         <Route component={NotFound} />
       </Switch>
     </div>
