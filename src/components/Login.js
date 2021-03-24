@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { loginRequest } from "../fetchRequests";
 import { Link } from "react-router-dom";
-
 import { LOGIN, useStore } from "../store/store";
+import GoogleLogin from "react-google-login";
 
 function Login(props) {
   const dispatch = useStore((state) => state.dispatch);
@@ -28,6 +28,7 @@ function Login(props) {
     const inputValue = e.target.value;
     setFormData((state) => ({ ...state, [inputName]: inputValue }));
   };
+  
 
   return (
     <>
@@ -39,6 +40,9 @@ function Login(props) {
         <button type="submit">Login</button>
         <br></br>
         <div>{user.message ? user.message : ""}</div>
+        <GoogleLogin
+        
+        />
         <br></br>
         <label>
           New User?
