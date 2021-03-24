@@ -24,7 +24,6 @@ function Registration(props) {
         </PopUp>;
       });
   };
-
   const handleChange = (e) => {
     let inputName = e.target.name;
     let inputValue = e.target.value;

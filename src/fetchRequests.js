@@ -82,6 +82,20 @@ export const getUserList = () => {
 export const getUser = (username) => {
   return fetch(baseURL + `users/${username}`).then((res) => res.json());
 };
+
+export const postMessage = (token, text) => {
+  return fetch(baseURL + "messages", {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer " + token,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      text,
+    }),
+  }).then((res) => res.json());
+};
+
 /*
 export const userProfilePic = (username, password, token) => {
   return fetch(baseURL + `users/${username}/picture`, {
