@@ -19,8 +19,8 @@ const User = ({ match }) => {
           <Card.Title>display Name: {user.displayName}</Card.Title>
         </Card.Body>
         <ListGroup className="list-group-flush">
-          <ListGroupItem>{Moment(user.createdAt).format("MM-DD-YYYY")}</ListGroupItem>
-          <ListGroupItem>{Moment(user.updatedAt).format("MM-DD-YYYY")}</ListGroupItem>
+          <ListGroupItem>Created On:{Moment(user.createdAt).format("MM-DD-YYYY")}</ListGroupItem>
+          <ListGroupItem>Updated on:{Moment(user.updatedAt).format("MM-DD-YYYY")}</ListGroupItem>
           <ListGroupItem>Google ID: {user.googleId}</ListGroupItem>
         </ListGroup>
         <Card.Body>
