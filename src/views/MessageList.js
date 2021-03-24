@@ -15,14 +15,14 @@ function MessageList(props) {
   }, []);
 
   useEffect(() => {
-    postMessages().then((postMessagesData) => {
-      dispatch({ type: POST_MESSAGES, payload: postMessagesData.postMessages });
+    postMessage().then((postMessageData) => {
+      dispatch({ type: POST_MESSAGES, payload: postMessagesData.postMessage });
     });
   }, []);
   
   useEffect(() => {
-    deleteMessages().then((dEleteMessagesData) => {
-      dispatch({ type: DELETE_MESSAGES, payload: deleteMessagesData.deleteMessages });
+    deleteMessage().then((deleteMessageData) => {
+      dispatch({ type: DELETE_MESSAGE, payload: deleteMessageData.deleteMessage });
     });
   }, []);
 

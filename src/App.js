@@ -7,6 +7,8 @@ import Registration from "./components/registration/Registration.js";
 import Profile from "./views/Profile";
 import UserList from "./views/UserList";
 import User from "./components/UserCard/User.js";
+import { deleteMessage } from "./fetchRequests";
+import { postMessage } from "./fetchRequests";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route exact path="/users/:username" render={(props) => <User {...props} />} />
         <Route exact path="/registration" component={Registration} />
         <Route path="/profile" component={Profile} />
+        <Route path="/deleteMessage/:id" component={deleteMessage} />
+        <Route path="/postMessage/:id" component={postMessage} />
         <Route component={NotFound} />
       </Switch>
     </div>

@@ -14,32 +14,35 @@ export const logoutRequest = (token) => {
     headers: { Authorization: "Bearer " + token },
   }).then((res) => res.json());
 };
-export const getMessages = () => {
-  return fetch(baseURL + "messages").then((res) => res.json());
+export const getMessages = async () => {
+  const res = await fetch(baseURL + "messages");
+  return await res.json();
 };
 
-export const postMessage = (token, message) => {
- return fetch(baseURL + "messages", {
-   method:"POST",
-   headers: { Authorization: "Bearer " + token, "Content-Type": "application/json" },
-   body: JSON.stringify({
-    message, 
-   }),
- }).then((res) => res.json())
-};
-
-export const deleteMessages = (token, message) => {
-  return fetch(baseURL + "deleteMessages", {
-    method:"DELETE",
+export const postMessage = async (token, message) => {
+ const res = await fetch(baseURL + "messages", {
+    method: "POST",
     headers: { Authorization: "Bearer " + token, "Content-Type": "application/json" },
     body: JSON.stringify({
-     deleteMessages, 
+      message,
     }),
-  }).then((res) => res.json())
+  });
+  return await res.json();
+};
+
+export const deleteMessage = async (token, message) => {
+  const res = await fetch(baseURL + "message", {
+    method: "DELETE",
+    headers: { Authorization: "Bearer " + token, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      message,
+    }),
+  });
+  return await res.json();
  };
 
 export const likeRequest = (like) => {
-  return fetch(baseURL + "/likes", {
+  return fetch(baseURL + "likes", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

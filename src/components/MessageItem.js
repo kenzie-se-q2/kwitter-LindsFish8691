@@ -27,9 +27,9 @@ function MessageItem(props) {
     });
   } 
   
-  const handleDeleteMessages = (e) => {
-    deleteMessagesRequest(message.token, id).then((deleteMessageData) => {
-      dispatch({ type: DELETE_MESSAGES, payload: deleteMessageData.deleteMessage});
+  const handleDeleteMessage = (e) => {
+    deleteMessageRequest(message.token, id).then((deleteMessageData) => {
+      dispatch({ type: DELETE_MESSAGE, payload: deleteMessageData.deleteMessage});
     });
   }
 

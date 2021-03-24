@@ -17,7 +17,7 @@ export const GET_MESSAGES = "GET_MESSAGES";
 export const LIKES = "LIKES";
 export const POST_MESSAGE = "POST_MESSAGE";
 export const DELETE_MESSAGE = "DELETE_MESSAGE";
-// export const GET_MESSAGE_LIKES = "GET_MESSAGE_LIKES";
+
 
 
 
@@ -36,8 +36,6 @@ const reducer = (state, action, pop) => {
       return { ...state, message: action.payload };
     case DELETE_MESSAGE:
         return { ...state, message: action.payload };
-    // case GET_MESSAGE_LIKES:
-    //   return { ...state, likes: action.payload };
     default:
       return state;
   }
