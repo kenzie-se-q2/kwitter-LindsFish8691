@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { createUser } from "../../fetchRequests.js";
 //import { useStore } from "../../store/store.js";
 import PopUp from "./Popup.js";
+import { Form, Button } from "react-bootstrap";
 
 function Registration(props) {
   //const dispatch = useStore((state) => state.dispatch);
@@ -32,18 +33,47 @@ function Registration(props) {
 
   return (
     <div>
-      <form id="registration-form" onSubmit={handleSubmit}>
-        <label>Username</label>
-        <input type="text" name="username" autoFocus value={userData.username} required onChange={handleChange}></input>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group>
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            name="username"
+            type="text"
+            placeholder="username"
+            onChange={handleChange}
+            value={userData.username}
+            required
+          />
+        </Form.Group>
 
-        <label htmlFor="displayName">Display Name</label>
-        <input type="text" name="displayName" autoFocus value={userData.displayName} required onChange={handleChange}></input>
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Display Name</Form.Label>
+          <Form.Control
+            name="displayName"
+            type="text"
+            placeholder="display name"
+            value={userData.displayName}
+            required
+            onChange={handleChange}
+          />
+        </Form.Group>
 
-        <label htmlFor="password">password</label>
-        <input type="password" name="password" autoFocus value={userData.password} required onChange={handleChange}></input>
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={userData.password}
+            required
+            onChange={handleChange}
+          />
+        </Form.Group>
 
-        <button>submit & open popup</button>
-      </form>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
       <PopUp trigger={buttonPopup} setTrigger={setButtonPopup}>
         <h3>{`Welcome ${userData.username}, to the forum.`}</h3>
       </PopUp>
@@ -52,17 +82,3 @@ function Registration(props) {
 }
 
 export default Registration;
-
-// function createUser(username, displayName, password) {
-//   fetch(baseURL + "users", {
-//     method: "POST",
-//     headers: { "Content-type": "application/json" },
-//     body: JSON.stringify({
-//       username,
-//       displayName,
-//       password,
-//     }),
-//   })
-//     .then((res) => res.json())
-//     .then((data) => console.log(data));
-// }
