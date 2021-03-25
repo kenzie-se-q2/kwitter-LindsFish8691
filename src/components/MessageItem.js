@@ -5,6 +5,7 @@ import { likeRequest, unlike, removeMessage } from "../fetchRequests";
 import { Card, Button } from "react-bootstrap";
 import Moment from "moment";
 import User from "../components/UserCard/User.js";
+import Message from "./MessageCard/Message.js";
 
 function MessageItem(props) {
   const dispatch = useStore((state) => state.dispatch);
@@ -46,6 +47,14 @@ function MessageItem(props) {
               render={(props) => <User {...props} />}
             >
               Go to profile
+            </Link>
+          </Card.Link>
+          <Card.Link to="#">
+            <Link
+              to={`messages/${props.id}`}
+              render={(props) => <Message {...props} />}
+            >
+              Go to message
             </Link>
           </Card.Link>
           {user.username === props.username ? (
