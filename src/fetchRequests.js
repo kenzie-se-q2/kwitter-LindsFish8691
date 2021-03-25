@@ -21,6 +21,10 @@ export const getMessages = () => {
   return fetch(baseURL + "messages").then((res) => res.json());
 };
 
+export const getProfilePic = (username) => {
+  return fetch(`${baseURL}users/${username}/picture`);
+};
+
 export const userProfilePic = (username, token, pictureData) => {
   let formData = new FormData();
   formData.append("picture", pictureData);
@@ -28,7 +32,6 @@ export const userProfilePic = (username, token, pictureData) => {
     method: "PUT",
     headers: {
       Authorization: "Bearer " + token,
-      "Content-Type": "multipart/form-data",
     },
     body: formData,
   });
@@ -122,7 +125,6 @@ export const patchUser = (token, username, newUserInfo) => {
   }).then((res) => res.json());
 };
 
-export const googleLoginRequest = () =>{
-  return window.open(baseURL + "auth/google/login", "_blank", "width=350,height=350" );
+export const googleLoginRequest = () => {
+  return window.open(baseURL + "auth/google/login", "_blank", "width=350,height=350");
 };
-
