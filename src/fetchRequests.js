@@ -111,24 +111,6 @@ export const removeMessage = (token, messageId) => {
   }).then((res) => res.json());
 };
 
-/*
-export const userProfilePic = (username, password, token) => {
-  return fetch(baseURL + `users/${username}/picture`, {
-    method: "PUT",
-    headers: {
-      Authorization: "Bearer " + token,
-      "Content-Type": "multipart/form-data",
-    },
-  })
-    .then((res) => res.json())
-    .then((user) => console.log(user));
-};
-*/
-/*
-export const getUser = (username) => {
-  return fetch(baseURL + `users/${username}`).then((res) => res.json());
-};
-*/
 export const patchUser = (token, username, newUserInfo) => {
   return fetch(baseURL + `users/${username}`, {
     method: "PATCH",
