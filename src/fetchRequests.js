@@ -95,5 +95,5 @@ export const patchUser = (token, username, newUserInfo) => {
 };
 
 export const googleLoginRequest = () =>{
-  return fetch("https://kwitter-api-b.herokuapp.com/auth/google/login").then((res) => res.json());
+  return fetch(baseURL + "auth/google/login").then((res) => res.json());
 };

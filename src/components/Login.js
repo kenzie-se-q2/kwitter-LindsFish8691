@@ -43,8 +43,9 @@ function Login(props) {
 
   function handleGoogleLogin(e){
     window.open(googleLoginRequest) 
-// "https://kwitter-api-b.herokuapp.com/auth/google/login"
   }
+  // "https://kwitter-api-b.herokuapp.com/auth/google/login"
+
 
   return (
     <>
