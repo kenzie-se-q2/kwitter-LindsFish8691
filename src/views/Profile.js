@@ -8,40 +8,37 @@ import { getUser, patchUser, userProfilePic, getProfilePic } from "../fetchReque
 import Menu from "../components/Menu";
 
 function Profile({ match }) {
-  let baseURL2 = "https://socialapp-api.herokuapp.com/";
+  let baseURL2 = "https://socialapp-api.herokuapp.com";
   const authUser = useStore((state) => state.user);
   const [user, setUser] = useState({});
-  const [username, setUsername] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [about, setAbout] = useState("");
   const [createdAt, setCreatedAt] = useState("");
   const [picture, setPicture] = useState("");
+  const [success, setSuccess] = useState(true);
+
 
   // to get the user info
   useEffect(() => {
     getUser(match.params.username).then((data) => {
       setUser(data.user);
-      setUsername(data.user.username);
+      setDisplayName(data.user.displayName);
       setAbout(data.user.about);
       setCreatedAt(data.user.createdAt);
     });
-    // getProfilePic(match.params.username).then((data) => {
-    //   setPicture(data.picture);
-    // });
-  }, []);
-  /*
-  function fileSelectedHandler(event) {
-    setPicture(picture.event);
-  }
-*/
+  }, [success]);
+  
   function fileUploadHandler(event) {
-    userProfilePic(authUser.username, authUser.token, picture).then((res) => console.log(res));
+    userProfilePic(authUser.username, authUser.token, picture).then((res) => {
+      setSuccess((state)=> !state)
+      console.log(res)});
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     const newUserInfo = {
       about,
-      username,
+      displayName,
     };
     patchUser(authUser.token, authUser.username, newUserInfo).then((data) => {
       console.log(data);
@@ -56,7 +53,7 @@ function Profile({ match }) {
     }
   }, []);
 
-  const picSource = getProfilePic(match.params.username);
+  // const picSource = getProfilePic(match.params.username);
   console.log(user);
 
   return (
@@ -69,15 +66,15 @@ function Profile({ match }) {
         <input type="file" onChange={(event) => setPicture(event.target.files[0])} />
 
         <button onClick={fileUploadHandler}>Upload</button>
-        <img src={""} />
+        <img src={baseURL2 + user.pictureLocation} />
 
         <p>About Me:</p>
         <p>{authUser.about}</p>
 
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Username</Form.Label>
-            <Form.Control onChange={(e) => setUsername(e.target.value)} value={username} type="text" placeholder="My username" />
+            <Form.Label>Display Name</Form.Label>
+            <Form.Control onChange={(e) => setDisplayName(e.target.value)} value={displayName} type="text" placeholder="My displayname" />
           </Form.Group>
 
           <Form.Group controlId="formBasicEmail">
