@@ -82,24 +82,7 @@ export const getUserList = () => {
 export const getUser = (username) => {
   return fetch(baseURL + `users/${username}`).then((res) => res.json());
 };
-/*
-export const userProfilePic = (username, password, token) => {
-  return fetch(baseURL + `users/${username}/picture`, {
-    method: "PUT",
-    headers: {
-      Authorization: "Bearer " + token,
-      "Content-Type": "multipart/form-data",
-    },
-  })
-    .then((res) => res.json())
-    .then((user) => console.log(user));
-};
-*/
-/*
-export const getUser = (username) => {
-  return fetch(baseURL + `users/${username}`).then((res) => res.json());
-};
-*/
+
 export const patchUser = (token, username, newUserInfo) => {
   return fetch(baseURL + `users/${username}`, {
     method: "PATCH",
@@ -111,8 +94,6 @@ export const patchUser = (token, username, newUserInfo) => {
   }).then((res) => res.json());
 };
 
-export const googleLoginRequest = (token) =>{
-  return fetch(baseURL + "auth/google/login", {
-    headers: { Authorization: "Bearer " + token },
-  }).then((res) => res.json());
+export const googleLoginRequest = () =>{
+  return fetch("https://kwitter-api-b.herokuapp.com/auth/google/login").then((res) => res.json());
 };

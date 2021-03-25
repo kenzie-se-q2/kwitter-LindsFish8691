@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { loginRequest } from "../fetchRequests";
+import React, { useState, useEffect } from "react";
+import { loginRequest, googleLoginRequest } from "../fetchRequests";
 import { Link } from "react-router-dom";
 import { LOGIN, useStore } from "../store/store";
-import GoogleLogin from "react-google-login";
+// import GoogleLogin from "react-google-login";
 
 function Login(props) {
   const dispatch = useStore((state) => state.dispatch);
@@ -16,7 +16,6 @@ function Login(props) {
 
   const handleLogin = (e) => {
     e.preventDefault();
-
     loginRequest(formData.username, formData.password).then((userData) => {
       dispatch({ type: LOGIN, payload: userData });
       window.localStorage.setItem("user", JSON.stringify(userData));
@@ -29,11 +28,22 @@ function Login(props) {
     setFormData((state) => ({ ...state, [inputName]: inputValue }));
   };
   
-  const clientId = clientId;
+  // const clientId = clientId;
+
+  useEffect(()=>{
+    window.addEventListener('message', handleMessage)
+    return ()=>{
+      window.removeEventListener('message', handleMessage)
+    }
+  }, [])
+
+  function handleMessage(e){
+    console.log(e)
+  }
 
   function handleGoogleLogin(e){
-    window.open() 
-
+    window.open(googleLoginRequest) 
+// "https://kwitter-api-b.herokuapp.com/auth/google/login"
   }
 
   return (
@@ -46,9 +56,12 @@ function Login(props) {
         <button type="submit">Login</button>
         <br></br>
         <div>{user.message ? user.message : ""}</div>
-        <GoogleLogin
-        clientId={clientId}
-        />
+
+        {/* <GoogleLogin
+        // clientId={clientId}
+        /> */}
+
+        <button onClick={handleGoogleLogin}>Google Login</button>
         <br></br>
         <label>
           New User?
