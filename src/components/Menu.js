@@ -35,7 +35,7 @@ function Menu(props) {
             </Nav.Link>
 
             <Nav.Link>
-              <Link to="/profile">Profile</Link>
+              <Link to={`profile/${user.username}`}>Profile</Link>
             </Nav.Link>
             <Nav.Link>
               <Link to="/users">Members</Link>
