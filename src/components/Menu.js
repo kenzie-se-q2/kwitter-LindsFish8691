@@ -37,6 +37,9 @@ function Menu(props) {
             <Nav.Link>
               <Link to="/profile">Profile</Link>
             </Nav.Link>
+            <Nav.Link>
+              <Link to="/users">Members</Link>
+            </Nav.Link>
           </Nav>
           {/* <Nav> */}
           {user.token && (
