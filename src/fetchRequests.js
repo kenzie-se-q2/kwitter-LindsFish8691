@@ -1,4 +1,4 @@
-export const baseURL = "https://kwitter-api-b.herokuapp.com/";
+export const baseURL = "https://socialapp-api.herokuapp.com/";
 
 export const loginRequest = (username, password) => {
   return fetch(baseURL + "auth/login", {
@@ -123,6 +123,6 @@ export const patchUser = (token, username, newUserInfo) => {
 };
 
 export const googleLoginRequest = () =>{
-  return fetch("https://kwitter-api-b.herokuapp.com/auth/google/login").then((res) => res.json());
+  return window.open(baseURL + "auth/google/login", "_blank", "width=350,height=350" );
 };
 

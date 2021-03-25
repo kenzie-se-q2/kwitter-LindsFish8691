@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { loginRequest, googleLoginRequest } from "../fetchRequests";
 import { Link } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
-
-import { LOGIN, useStore } from "../store/store";
+import { LOGIN, useStore, GOOGLE_LOGIN } from "../store/store";
 
 function Login(props) {
   const dispatch = useStore((state) => state.dispatch);
@@ -43,7 +42,14 @@ function Login(props) {
   }
 
   function handleGoogleLogin(e){
-    window.open(googleLoginRequest) 
+    const googleOpen = googleLoginRequest()
+    googleOpen.window.opener.onmessage=(event)=>{
+      if(!event || !event.data || !event.data.token){
+        return
+      }
+      googleOpen.close()
+      dispatch({ type: LOGIN, payload: event.data})
+    }
 // "https://kwitter-api-b.herokuapp.com/auth/google/login"
   }
 
