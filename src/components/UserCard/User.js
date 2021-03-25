@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getUser } from "../../fetchRequests.js";
-import { Card, ListGroupItem, ListGroup } from "react-bootstrap";
+import { Card, ListGroupItem, ListGroup, Button } from "react-bootstrap";
 import Moment from "moment";
 
 const User = ({ match }) => {
@@ -26,6 +26,9 @@ const User = ({ match }) => {
         <Card.Body>
           About {user.displayName}: {user.about}
         </Card.Body>
+        <Button variant="dark" href="/users">
+          Go Back
+        </Button>
       </Card>
     </div>
   );

@@ -12,7 +12,7 @@ const UserCard = ({ user }) => {
           <Card.Title>{user.displayName}</Card.Title>
           <Card.Text>Username: {user.username}</Card.Text>
           <Card.Text>{Moment(user.createdAt).format("MM-DD-YYYY")}</Card.Text>
-          <Button variant="primary">
+          <Button variant="dark">
             <Link to={`users/${user.username}`} render={(props) => <User {...props} />}>
               Go to profile
             </Link>
