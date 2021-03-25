@@ -29,6 +29,23 @@ function Login(props) {
     const inputValue = e.target.value;
     setFormData((state) => ({ ...state, [inputName]: inputValue }));
   };
+  // const clientId = clientId;
+
+  useEffect(()=>{
+    window.addEventListener('message', handleMessage)
+    return ()=>{
+      window.removeEventListener('message', handleMessage)
+    }
+  }, [])
+
+  function handleMessage(e){
+    console.log(e)
+  }
+
+  function handleGoogleLogin(e){
+    window.open(googleLoginRequest) 
+// "https://kwitter-api-b.herokuapp.com/auth/google/login"
+  }
 
   return (
     <>
