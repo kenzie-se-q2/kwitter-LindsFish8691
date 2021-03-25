@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Card, ListGroupItem, ListGroup, Button } from "react-bootstrap";
 import Moment from "moment";
 import { getMessage } from "../../fetchRequests";
-import MessageItem from "../MessageItem.js";
 
 const Message = ({ match }) => {
   const [message, setMessage] = useState({});
