@@ -79,6 +79,7 @@ function Login(props) {
         </Button>
         <br></br>
         <div>{user.message ? user.message : ""}</div>
+        <button onClick={handleGoogleLogin}>Google Login</button>
         <br></br>
         <label>
           New User?
