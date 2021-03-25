@@ -14,18 +14,10 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/messages" component={MessageList} />
-        <Route
-          exact
-          path="/messages/:id"
-          render={(props) => <Message {...props} />}
-        />
+        <Route exact path="/messages" component={MessageList} />
+        <Route exact path="/messages/:id" render={(props) => <Message {...props} />} />
         <Route exact path="/users" component={UserList} />
-        <Route
-          exact
-          path="/users/:username"
-          render={(props) => <User {...props} />}
-        />
+        <Route exact path="/users/:username" render={(props) => <User {...props} />} />
         <Route exact path="/registration" component={Registration} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/profile/:username" component={Profile} />

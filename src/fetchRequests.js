@@ -84,7 +84,7 @@ export const getUser = (username) => {
 };
 
 export const getMessage = (messageId) => {
-  return fetch(baseURL + `users/${messageId}`).then((res) => res.json());
+  return fetch(baseURL + `messages/${messageId}`).then((res) => res.json());
 };
 
 export const postMessage = (token, text) => {
