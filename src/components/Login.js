@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { loginRequest } from "../fetchRequests";
+import React, { useState, useEffect } from "react";
+import { loginRequest, googleLoginRequest } from "../fetchRequests";
 import { Link } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 
