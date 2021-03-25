@@ -7,13 +7,15 @@ import Registration from "./components/registration/Registration.js";
 import Profile from "./views/Profile";
 import UserList from "./views/UserList";
 import User from "./components/UserCard/User.js";
+import Message from "./components/MessageCard/Message.js";
 
 function App() {
   return (
     <div className="App">
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/messages" component={MessageList} />
+        <Route exact path="/messages" component={MessageList} />
+        <Route exact path="/messages/:id" render={(props) => <Message {...props} />} />
         <Route exact path="/users" component={UserList} />
         <Route exact path="/users/:username" render={(props) => <User {...props} />} />
         <Route exact path="/registration" component={Registration} />

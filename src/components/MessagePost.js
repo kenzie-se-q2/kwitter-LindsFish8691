@@ -19,6 +19,7 @@ const MessagePost = (props) => {
     let inputValue = e.target.value;
     setMessage((state) => ({ ...state, [inputName]: inputValue }));
   };
+
   return (
     <div>
       <Form onSubmit={handleSubmit}>
