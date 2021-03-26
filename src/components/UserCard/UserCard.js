@@ -14,7 +14,7 @@ const UserCard = ({ user }) => {
           <Card.Text>{Moment(user.createdAt).format("MM-DD-YYYY")}</Card.Text>
           <Button variant="dark">
             <Link to={`users/${user.username}`} render={(props) => <User {...props} />}>
-              Go to profile
+              Go to User Info
             </Link>
           </Button>
         </Card.Body>

@@ -41,7 +41,7 @@ function MessageItem(props) {
           <Card.Text>Likes: {props.likes.length}</Card.Text>
           <Card.Link to="#">
             <Link to={`users/${props.username}`} render={(props) => <User {...props} />}>
-              Go to profile
+              Go to User Info
             </Link>
           </Card.Link>
           <Card.Link to="#">
