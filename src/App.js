@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/kwitter-LindsFish8691" component={Home} />
         <Route exact path="/messages" component={MessageList} />
         <Route exact path="/messages/:id" render={(props) => <Message {...props} />} />
         <Route exact path="/users" component={UserList} />
