@@ -9,6 +9,7 @@ See my.kenzie.academy for details.
 
 ## Credits and References
 
-Team Members:Lindsey Fisher: Mike A, Ryland Crouse
-
-References
+Team Members:
+Linds Fisher, Alex Mourtos, Cynthia Onwuana, Tina Safar Abadi
+Assistance from: Peter Mayor, Mike A, TJ Hindman, Manny Ledoux, Yaseen
+References:
