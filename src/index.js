@@ -9,9 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter
-      basename="/<kwitter-starter
->">
+    <BrowserRouter basename="/<kwitter-starter>">
       <App />
     </BrowserRouter>
   </React.StrictMode>,
