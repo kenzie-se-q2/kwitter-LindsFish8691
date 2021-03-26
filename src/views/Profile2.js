@@ -1,47 +1,44 @@
-// TODO: Create a Profile to display the current users information
-// TODO: Create a Profile to display the current users information
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Form, Button, Container } from "react-bootstrap";
 import { useStore } from "../store/store";
-import { getUser, patchUser, userProfilePic, getProfilePic } from "../fetchRequests.js";
+import { getUser, patchUser, userProfilePic } from "../fetchRequests.js";
 import Menu from "../components/Menu";
 
 function Profile({ match }) {
   let baseURL2 = "https://socialapp-api.herokuapp.com";
   const authUser = useStore((state) => state.user);
   const [user, setUser] = useState({});
-  const [displayName, setDisplayName] = useState("");
+  const [username, setUsername] = useState("");
   const [about, setAbout] = useState("");
   const [createdAt, setCreatedAt] = useState("");
   const [picture, setPicture] = useState("");
-  const [success, setSuccess] = useState(true);
-
 
   // to get the user info
   useEffect(() => {
     getUser(match.params.username).then((data) => {
       setUser(data.user);
-      setDisplayName(data.user.displayName);
+      setUsername(data.user.username);
       setAbout(data.user.about);
       setCreatedAt(data.user.createdAt);
     });
-  }, [success]);
-  
+  }, [match]);
+  /*
+  function fileSelectedHandler(event) {
+    setPicture(picture.event);
+  }
+*/
   function fileUploadHandler(event) {
-    userProfilePic(authUser.username, authUser.token, picture).then((res) => {
-      setSuccess((state)=> !state)
-      console.log(res)});
+    userProfilePic(authUser.token, authUser.username, picture).then((res) => console.log(res));
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     const newUserInfo = {
       about,
-      displayName,
+      username,
     };
-    patchUser(authUser.token, authUser.username, newUserInfo).then((data) => {
-      console.log(data);
+    patchUser(authUser.token, user, newUserInfo).then((data) => {
       setUser(data.user);
     });
   }
@@ -53,15 +50,12 @@ function Profile({ match }) {
     }
   }, []);
 
-  // const picSource = getProfilePic(match.params.username);
-  console.log(user);
-
   return (
     <div>
       <Menu />
 
       <Container className="Profile">
-        <h1>{authUser.username}'s Profile</h1>
+        <h1>{username}'s Profile</h1>
 
         <input type="file" onChange={(event) => setPicture(event.target.files[0])} />
 
@@ -69,19 +63,17 @@ function Profile({ match }) {
         <img src={baseURL2 + user.pictureLocation} />
 
         <p>About Me:</p>
-        <p>{authUser.about}</p>
+        <p>{about}</p>
 
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Display Name</Form.Label>
-            <Form.Control onChange={(e) => setDisplayName(e.target.value)} value={displayName} type="text" placeholder="My displayname" />
+            <Form.Label>Username</Form.Label>
+            <Form.Control onChange={(e) => setUsername(e.target.value)} value={username} type="text" placeholder="My username" />
           </Form.Group>
-
           <Form.Group controlId="formBasicEmail">
             <Form.Label>About Me</Form.Label>
             <Form.Control onChange={(e) => setAbout(e.target.value)} value={about} type="text" placeholder="About me..." />
           </Form.Group>
-
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Profile Created</Form.Label>
             <Form.Control value={createdAt} type="text" placeholder="Created..." />

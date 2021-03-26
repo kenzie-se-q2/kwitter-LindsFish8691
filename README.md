@@ -9,6 +9,6 @@ See my.kenzie.academy for details.
 
 ## Credits and References
 
-Team Members:
+Team Members:Lindsey Fisher: Mike A, Ryland Crouse
 
 References
