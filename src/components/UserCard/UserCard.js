@@ -13,17 +13,10 @@ const UserCard = ({ user }) => {
           <Card.Title>{user.displayName}</Card.Title>
           <Card.Text>Username: {user.username}</Card.Text>
 
-          <Card.Img
-            variant="top"
-            alt="No Image Yet"
-            src={`${baseURL}users/${user.username}/picture`}
-          />
+          <Card.Img variant="top" alt="No Image Yet" src={`${baseURL}users/${user.username}/picture`} />
           <Card.Text>{Moment(user.createdAt).format("MM-DD-YYYY")}</Card.Text>
           <Button variant="dark">
-            <Link
-              to={`users/${user.username}`}
-              render={(props) => <User {...props} />}
-            >
+            <Link to={`users/${user.username}`} render={(props) => <User {...props} />}>
               Go to User Info
             </Link>
           </Button>

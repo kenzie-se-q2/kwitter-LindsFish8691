@@ -25,13 +25,7 @@ const MessagePost = (props) => {
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Label>Type your message here:</Form.Label>
-          <Form.Control
-            name="text"
-            as="textarea"
-            rows={3}
-            onChange={handleChange}
-            value={message.text}
-          />
+          <Form.Control name="text" as="textarea" rows={3} onChange={handleChange} value={message.text} />
         </Form.Group>
         <Button variant="primary" type="submit">
           Submit
