@@ -26,7 +26,9 @@ function Menu(props) {
     // </div>
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand href="/">Home</Navbar.Brand>
+        <Navbar.Brand>
+          <Link to="/">Home</Link>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
