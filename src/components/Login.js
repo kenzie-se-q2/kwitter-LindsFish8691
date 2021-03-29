@@ -30,27 +30,27 @@ function Login(props) {
   };
   // const clientId = clientId;
 
-  useEffect(()=>{
-    window.addEventListener('message', handleMessage)
-    return ()=>{
-      window.removeEventListener('message', handleMessage)
-    }
-  }, [])
+  useEffect(() => {
+    window.addEventListener("message", handleMessage);
+    return () => {
+      window.removeEventListener("message", handleMessage);
+    };
+  }, []);
 
-  function handleMessage(e){
-    console.log(e)
+  function handleMessage(e) {
+    console.log(e);
   }
 
-  function handleGoogleLogin(e){
-    const googleOpen = googleLoginRequest()
-    googleOpen.window.opener.onmessage=(event)=>{
-      if(!event || !event.data || !event.data.token){
-        return
+  function handleGoogleLogin(e) {
+    const googleOpen = googleLoginRequest();
+    googleOpen.window.opener.onmessage = (event) => {
+      if (!event || !event.data || !event.data.token) {
+        return;
       }
-      googleOpen.close()
-      dispatch({ type: LOGIN, payload: event.data})
-    }
-// "https://kwitter-api-b.herokuapp.com/auth/google/login"
+      googleOpen.close();
+      dispatch({ type: LOGIN, payload: event.data });
+    };
+    // "https://kwitter-api-b.herokuapp.com/auth/google/login"
   }
 
   return (

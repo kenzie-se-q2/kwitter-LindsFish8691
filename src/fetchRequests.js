@@ -126,9 +126,5 @@ export const patchUser = (token, username, newUserInfo) => {
 };
 
 export const googleLoginRequest = () => {
-  return window.open(
-    baseURL + "auth/google/login",
-    "_blank",
-    "width=350,height=350"
-  );
+  return window.open(baseURL + "auth/google/login", "blank", "width=350,height=350");
 };

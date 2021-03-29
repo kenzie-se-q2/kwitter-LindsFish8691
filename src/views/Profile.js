@@ -17,7 +17,6 @@ function Profile({ match }) {
   const [picture, setPicture] = useState("");
   const [success, setSuccess] = useState(true);
 
-
   // to get the user info
   useEffect(() => {
     getUser(match.params.username).then((data) => {
@@ -27,11 +26,12 @@ function Profile({ match }) {
       setCreatedAt(data.user.createdAt);
     });
   }, [success]);
-  
+
   function fileUploadHandler(event) {
     userProfilePic(authUser.username, authUser.token, picture).then((res) => {
-      setSuccess((state)=> !state)
-      console.log(res)});
+      setSuccess((state) => !state);
+      console.log(res);
+    });
   }
 
   function handleSubmit(e) {
@@ -53,7 +53,6 @@ function Profile({ match }) {
     }
   }, []);
 
-  // const picSource = getProfilePic(match.params.username);
   console.log(user);
 
   return (
@@ -74,7 +73,12 @@ function Profile({ match }) {
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Display Name</Form.Label>
-            <Form.Control onChange={(e) => setDisplayName(e.target.value)} value={displayName} type="text" placeholder="My displayname" />
+            <Form.Control
+              onChange={(e) => setDisplayName(e.target.value)}
+              value={displayName}
+              type="text"
+              placeholder="My displayname"
+            />
           </Form.Group>
 
           <Form.Group controlId="formBasicEmail">
